@@ -10,4 +10,7 @@ contextBridge.exposeInMainWorld('api', {
     const file = await ipcRenderer.invoke('selectFile')
     callback(file)
   },
+  updateTitle: (title) => {
+    ipcRenderer.send('updateTitle', title)
+  },
 })

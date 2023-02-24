@@ -40,3 +40,7 @@ ipcMain.handle('selectFile', async (event) => {
   const { filePaths } = await dialog.showOpenDialog()
   return filePaths[0]
 })
+
+ipcMain.on('updateTitle', (event, title) => {
+  BrowserWindow.fromWebContents(event.sender).title = title
+})
