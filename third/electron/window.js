@@ -16,9 +16,9 @@ const createWindow = () => {
   mainWindow.loadFile(path.resolve(__dirname, '../src/index.html'))
   const win = screen.getPrimaryDisplay().workAreaSize
 
-  setTimeout(() => {
-    mainWindow.setBounds({ width: 600, height: 600, x: win.width / 2 - 300, y: 100 }, true)
-  }, 1000)
+  // setTimeout(() => {
+  //   mainWindow.setBounds({ width: 600, height: 600, x: win.width / 2 - 300, y: 100 }, true)
+  // }, 1000)
 }
 
 module.exports = { createWindow }
