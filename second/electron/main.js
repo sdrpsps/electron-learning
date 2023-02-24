@@ -1,4 +1,4 @@
-const { ipcMain } = require('electron')
+const { ipcMain, dialog } = require('electron')
 const { app, BrowserWindow } = require('electron/main')
 const path = require('path')
 const { createMenu } = require('./menu')
@@ -11,8 +11,8 @@ const createWindow = () => {
     alwaysOnTop: true, // 窗口置顶
     x: 100,
     y: 1080,
-    frame: false,
-    transparent: true,
+    // frame: false,
+    // transparent: true,
     webPreferences: {
       preload: path.resolve(__dirname, 'preload.js'),
       nodeIntegration: true,
@@ -34,4 +34,9 @@ app.whenReady().then(() => {
   app.on('activate', () => {
     createWindow()
   })
+})
+
+ipcMain.handle('selectFile', async (event) => {
+  const { filePaths } = await dialog.showOpenDialog()
+  return filePaths[0]
 })
