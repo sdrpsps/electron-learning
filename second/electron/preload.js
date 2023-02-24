@@ -1,9 +1,9 @@
-const { ipcRenderer } = require('electron')
-const fs = require('fs')
-const path = require('path')
+const { ipcRenderer, contextBridge } = require('electron')
 
-const content = fs.readFileSync(path.resolve(__dirname, '../package.json'), 'utf-8')
-console.log(content)
-
-// 进程通信
-ipcRenderer.send('saveFile')
+contextBridge.exposeInMainWorld('api', {
+  updateH1: (callback) => {
+    ipcRenderer.on('test', (event, value) => {
+      callback(value)
+    })
+  },
+})

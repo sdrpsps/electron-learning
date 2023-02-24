@@ -1,3 +1,4 @@
-for (let i = 0; i < 10; i++) {
-  console.log('渲染进程', 1)
-}
+window.api.updateH1((value) => {
+  const h1 = document.querySelector('h1')
+  h1.textContent = value
+})

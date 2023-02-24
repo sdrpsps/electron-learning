@@ -1,6 +1,7 @@
 const { ipcMain } = require('electron')
 const { app, BrowserWindow } = require('electron/main')
 const path = require('path')
+const { createMenu } = require('./menu')
 
 // 打开渲染进程
 const createWindow = () => {
@@ -20,6 +21,7 @@ const createWindow = () => {
   mainWindow.setAspectRatio(1)
   mainWindow.loadFile(path.resolve(__dirname, '../src/index.html'))
   mainWindow.webContents.toggleDevTools() // 开启开发者工具
+  createMenu(mainWindow)
 }
 
 app.whenReady().then(() => {
@@ -32,9 +34,4 @@ app.whenReady().then(() => {
   app.on('activate', () => {
     createWindow()
   })
-})
-
-// 进程通信
-ipcMain.on('saveFile', () => {
-  console.log('saveFile')
 })
