@@ -6,6 +6,9 @@ window.api.updateH1((value) => {
 window.addEventListener('DOMContentLoaded', () => {
   const btn = document.querySelector('#btn')
   btn.addEventListener('click', () => {
-    window.api.upload()
+    window.api.upload((fileName) => {
+      const input = document.querySelector('input')
+      input.value = fileName
+    })
   })
 })

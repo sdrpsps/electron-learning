@@ -6,8 +6,8 @@ contextBridge.exposeInMainWorld('api', {
       callback(value)
     })
   },
-  upload: async () => {
+  upload: async (callback) => {
     const file = await ipcRenderer.invoke('selectFile')
-    document.querySelector('input').value = file
+    callback(file)
   },
 })
