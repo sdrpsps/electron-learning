@@ -1,3 +1,3 @@
-# electron-camera
+# electron-learning
 
-桌面摄像头-基于Electron+Vue3+Vite开发
+Electron 开发学习过程
